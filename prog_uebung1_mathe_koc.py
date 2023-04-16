@@ -43,6 +43,7 @@ def divid_diff_calc(x, y, start, end):
     if start == end: return y[end]
     return (divid_diff_calc(x, y, start+1, end)-divid_diff_calc(x, y, start, end-1))/(x[end]-x[start])
 
+
 ###################################################
 print("a) ")
 x = np.array([0, 1, 2, 3])
@@ -81,6 +82,7 @@ for i in range(n):
     x[i] = start + (((end-start)*i)/(n-1))
     y[i] = np.sin(x[i])
 
+
 #Interpolation und Laufzeitmessung
 resolution = 100
 start_interp = 0
@@ -112,6 +114,7 @@ diff_array_lagrange = np.array(y_intp_lagrange_low_resolution-y)
 
 y_intp_newton_low_resolution = newton_inter(x, y, x)
 diff_array_newton = np.array(y_intp_newton_low_resolution-y)
+
 
 #Plotten
 fig, (ax, axi1, axi2, axi3) = plt.subplots(4, 1)

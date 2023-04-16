@@ -32,9 +32,9 @@ def newton_inter(x, y, xi):
         div_diff_array[i] = divid_diff_calc(x, y, 0, i)
 
     yi = np.ones(len(xi))*div_diff_array[0]
-    temp = 1
     for k in range(1, len(x)):
-        for i in range(k+1):
+        temp = 1
+        for i in range(k):
             temp *= (xi-x[i])
         yi += div_diff_array[k]*temp
     return yi
@@ -117,15 +117,19 @@ diff_array_newton = np.array(y_intp_newton_low_resolution-y)
 fig, (ax, axi1, axi2, axi3) = plt.subplots(4, 1)
 fig.tight_layout()
 ax.plot(x, y, color="C1")
+ax.plot(x, y, "o", color="C7")
 ax.set_title("f(x)=sin(x)", fontsize = 10)
 
 axi1.plot(x_intp, y_intp_naiv, color="C0")
+axi1.plot(x, y, "o", color="C7")
 axi1.set_title("p1(x) Naive Interpolation", fontsize = 10)
 
 axi2.plot(x_intp, y_intp_lagrange, color="C0")
+axi2.plot(x, y, "o", color="C7")
 axi2.set_title("p2(x) Lagrange Interpolation", fontsize = 10)
 
 axi3.plot(x_intp, y_intp_newton, color="C0")
+axi3.plot(x, y, "o", color="C7")
 axi3.set_title("p3(x) Newton Interpolation)", fontsize = 10)
 
 fig2, (axi1diff, axi2diff, axi3diff) = plt.subplots(3, 1)

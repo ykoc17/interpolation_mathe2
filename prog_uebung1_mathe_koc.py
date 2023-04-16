@@ -133,7 +133,7 @@ axi2.set_title("p2(x) Lagrange Interpolation", fontsize = 10)
 
 axi3.plot(x_intp, y_intp_newton, color="C0")
 axi3.plot(x, y, "o", color="C7")
-axi3.set_title("p3(x) Newton Interpolation)", fontsize = 10)
+axi3.set_title("p3(x) Newton Interpolation", fontsize = 10)
 
 fig2, (axi1diff, axi2diff, axi3diff) = plt.subplots(3, 1)
 fig2.tight_layout()

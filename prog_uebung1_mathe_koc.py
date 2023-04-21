@@ -31,6 +31,10 @@ def newton_inter(x, y, xi):
     for i in range(len(x)):
         div_diff_array[i] = divid_diff_calc(x, y, 0, i)
 
+    div_diff_array2 = np.empty(len(x))
+    for i in range(len(x)):
+        div_diff_array2[i] = divid_diff_calc_iter(x, y, i)
+
     yi = np.ones(len(xi))*div_diff_array[0]
     for k in range(1, len(x)):
         temp = 1
@@ -42,6 +46,18 @@ def newton_inter(x, y, xi):
 def divid_diff_calc(x, y, start, end):
     if start == end: return y[end]
     return (divid_diff_calc(x, y, start+1, end)-divid_diff_calc(x, y, start, end-1))/(x[end]-x[start])
+
+def divid_diff_calc_iter(x, y, end):
+    a = np.empty((end,end))
+
+    for i in range(0, end+1):
+        a[i,i] = y[i]
+
+    for i in range(end):
+        for j in range(i+1, end):
+            a[i,j] = (a[i+1, j]-a[i, j-1])/(x[j]-x[i])
+            a[i+1, j+1] = (a[i+2, j+1]-a[i+1, j])/(x[j]-x[i])
+    return a[0,end]
 
 
 ###################################################

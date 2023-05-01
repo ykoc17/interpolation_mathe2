@@ -19,11 +19,11 @@ def naiv_inter(x, y, xi):
 def lagrange_inter(x, y, xi):
     yi = 0
     for k in range(len(x)):
-        temp = 1
+        lk = 1
         for j in range(len(x)):
             if j != k:          #Dieser Term wird ausgelassen
-                temp = temp * ((xi - x[j]) / (x[k] - x[j]))
-        yi = yi + temp * y[k]
+                lk = lk * ((xi - x[j]) / (x[k] - x[j]))
+        yi = yi + (lk * y[k])
     return yi
 
 def newton_inter(x, y, xi):
